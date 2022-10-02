@@ -1,0 +1,148 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'SF Pro Text';
+}
+
+#app {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+}
+
+
+
+/* Responsive */
+@media screen and (max-width: 962px) {
+    .details-chat {
+        grid-template-columns: 1fr;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .details-chat > * {
+        transition: .3s;
+    }
+
+    .sidebar-contacts {
+        position: absolute !important;
+        background: white;
+        height: 100%;
+        border-right: 1px solid #ddd;
+    }
+
+    .main-chats {
+        opacity: 0;
+        z-index: -1;
+    }
+
+    .is-message .details-chat .sidebar-contacts {
+        transform: translateX(-100%);
+    }
+
+    .is-message .details-chat .main-chats {
+        opacity: 1;
+        z-index: 1;
+    }
+
+
+
+    /* Header responsive */
+    .chat-header {
+        grid-template-columns: 40px auto 84px;
+    }
+ 
+    .header-undo {
+        align-items: center;
+        display: flex;
+        cursor: pointer;
+    }
+    
+    .header-undo path {
+        fill: #a5a5a5;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #app {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar-contacts {
+        width: 100% !important;
+        overflow: overlay;
+        height: calc(100vh - 60px);
+    }
+
+    .sidebar-contacts .sidebar-input, .sidebar-contacts .card-wrapper { 
+        width: 90% !important;
+    }
+
+
+    .menu-options {
+        position: fixed;
+        z-index: 2;
+
+        width: 98% !important;
+        height: 60px !important;
+        bottom: 0;
+        padding: 0 21px !important;
+        border-radius: 8px 8px 0px 0px;
+        box-shadow: 1px -2px 10px 0px #00000030;
+        left: 1%;
+        
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: none !important;
+    }
+
+    .profile, .options, .configurations {
+        flex-direction: row !important;
+        
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .profile a:nth-child(1), .configurations svg:nth-child(1) {
+        display: none;
+    }
+
+
+    .options > a {
+        height: 42px;
+    }
+
+    .configurations {
+        justify-content: right;
+    }
+
+
+    .is-message .menu-options {
+        transform: translateY(100%);
+    }
+
+
+
+
+    .main-chats, .chat-header, .chat-list  {
+        width: 100vw;
+    }
+
+    .chat-footer {
+        grid-template-columns: 42px auto 42px;
+        gap: 5px;
+    }
+
+    .section-new-chat {
+        min-width: 0 !important;
+    }
+
+    .chat-footer button {
+        width: 34px;
+        overflow: hidden;
+        margin-left: 6px;
+    }
+
+    .info-for-user {
+        display: none;
+    }
+}

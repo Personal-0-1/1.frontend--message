@@ -1,0 +1,73 @@
+.sidebar-contacts {
+    width: 360px;
+    position: relative;
+}
+
+.title {
+    margin-top: 27px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 18px;
+}
+
+.sidebar-input {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px 12px;
+    gap: 16px;
+
+    width: 320px;
+    height: 42px;
+
+    background: #EEEEEE;
+    border-radius: 12px;
+
+    margin-top: 6px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.sidebar-input input {
+    color: #00000045;
+    background: transparent;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    width: 100%;
+}
+
+.sort-by {
+    margin-top: 11px;
+}
+
+.sort-by p {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+
+    color: rgba(0, 0, 0, 0.65);
+
+    width: fit-content;
+    display: flex;
+    gap: 8px;
+    margin-left: 32px;
+    margin-top: 12px;
+}
+
+.sort-by strong {
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 400;
+    color: #2D9CDB;
+
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    width: fit-content;
+    cursor: pointer;
+}
+
+.list-contact {
+    margin-top: 12px;
+}
