@@ -1,4 +1,4 @@
-<script src="./Methods/Index"></script>
+<script src="./Methods/Index.js"></script>
 
 
 <template>
