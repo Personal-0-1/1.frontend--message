@@ -1,5 +1,5 @@
 <script setup>
-  import LogoIcon from './icons/gen/logoIcon.vue';
+  import LogoIcon from './icons/gen/LogoIcon.vue';
   import ProfileIcon from './icons/gen/ProfileIcon.vue';
   import WebIcon from './icons/options/webIcon.vue';
   import MessageIcon from './icons/options/MessageIcon.vue';
