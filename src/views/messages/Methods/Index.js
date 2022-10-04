@@ -58,23 +58,26 @@ export default {
         disableChatSection();
 
         
-        document.onclick = (e) => {
+        document.onclick = async (e) => {
             let isContact = e.target.closest(`*[data-contact-id]`);
-            if (isContact) this.setInfoContact(isContact.dataset.contactId);
+            if (isContact) await this.setInfoContact(isContact.dataset.contactId);
+
+
+            document.querySelector('.chat-list').scrollTop = document.querySelector('.chat-list').scrollHeight;
         } 
 
         connection.on("ReceiveMessage", async function (messageRecived, profileRecivedId) { 
             const message = JSON.parse(messageRecived);
-            if (!message.profile.profilePicture.includes("data:image")) {
-                const response = await axios.get(`${host}/Home/GetStaticFiles?path=${message.profile.profilePicture}`);
-                message.profile.profilePicture = `data:image/jpeg;base64,${response.data}`;
-            }
 
             if (profileRecivedId != profileId.value) return;
         
             if (listMessages.value.Today) listMessages.value.Today.push(message);
             else listMessages.value.Today = [message]; 
         });
+    },
+
+    updated() {
+        document.querySelector('.chat-list').scrollTop = document.querySelector('.chat-list').scrollHeight;
     },
     
     unmounted() {

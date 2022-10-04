@@ -1,7 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import axios from 'axios';
-
-import { host, profileId } from './Env';
 
 // import components 
 import MessagesIndex from './views/messages/Index.vue';

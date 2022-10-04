@@ -2,7 +2,6 @@ import axios from 'axios';
 import { host, profileId } from './../../../Env';
 
 const postCreateChat = async (internalProfileId, contactId, content, resetFunction) => {
-    debugger
     const response = await fetch(
         `${host}/Chat/PostCreateChat?profileId=${internalProfileId}&chatId=${contactId}&content=${content}`,
         { method: "POST" }

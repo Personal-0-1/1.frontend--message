@@ -5,7 +5,10 @@
     import { host, profile, profilePictureDefault, updateProfile } from '../../Env';
     import axios from 'axios';
 
+    import { getDownloadURL, getStorage, ref as refFire, uploadBytes } from "firebase/storage";
+
     import { disableChatSection } from './../../helpers/dashboard'; 
+    import { appFireBase } from './../../helpers/firebase';
 
     const contact = ref({ profile: {} });
     export default {
@@ -23,14 +26,18 @@
 
         methods: {
             async uploadFile(element) {
-                const formData = new FormData();
-                formData.append('formFile', element.files[0]);
+                const storage = getStorage(appFireBase);
+                const storageRef = refFire(storage, 'images/' + element.files[0].name);
 
-                const response = await axios.post(`${host}/Profile/UpdateProfilePictureByProfileId?profileId=${this.profile.id}`, formData);                
-                updateProfile("profilePicture", `${response.data.value}`);
-
-                document.querySelector(".image-profile img").src = `${response.data.value}`;
-                document.querySelector(".profile-icon").src = `${response.data.value}`;
+                // 'file' comes from the Blob or File API
+                var response = await uploadBytes(storageRef, element.files[0])
+                    
+                const responseDownLoad = await getDownloadURL(storageRef);
+                const profile = await axios.post(`${host}/Profile/UpdateProfileValuesByProfileId?name=profilePicture&value=${encodeURI(responseDownLoad)}&profileId=${this.profile.id}`);
+            
+                updateProfile("profilePicture", profile.data.profilePicture);
+                document.querySelector(".image-profile img").src = profile.data.profilePicture;
+                document.querySelector(".profile-icon").src = profile.data.profilePicture;
             },
 
             async updateFields(element) {
