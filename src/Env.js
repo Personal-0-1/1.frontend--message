@@ -3,8 +3,8 @@ import { ref } from "vue";
 
 
 // host name - Temporal
-// const host = "https://ce-message.somee.com";
-const host = "https://localhost:44380";
+const host = "https://ce-message.somee.com";
+// const host = "https://localhost:44380";
 
 // Profile Id - Temporal
 let profileId = ref();
